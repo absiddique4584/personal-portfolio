@@ -4,23 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Hobby;
+use App\Models\Interest;
 use Exception;
-class HobbyController extends Controller
+class InterestController extends Controller
 {
-
-
-
-
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
-        $hobbies = Hobby::latest()->get();
+        $interests = Interest::latest()->get();
 
-        return view('admin.hobby.manage', compact('hobbies'));
+        return view('admin.interest.manage', compact('interests'));
     }
 
 
@@ -31,7 +23,7 @@ class HobbyController extends Controller
      */
     public function create()
     {
-        return view('admin.hobby.create');
+        return view('admin.interest.create');
     }
 
 
@@ -44,25 +36,25 @@ class HobbyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
             'icon' => 'required',
+            'number' => 'required',
+            'title' => 'required',
         ]);
-        $hobbies = null;
+        $interests = null;
         try {
-            $name     = $request->name;
-            $hobbies = Hobby::create([
-                'name' => $name,
-                'slug' => slugify($name),
-                'icon' =>$request->icon,
+            $interests = Interest::create([
+                'icon' => $request->icon,
+                'number' => $request->number,
+                'title' => $request->title,
             ]);
         } catch (Exception $exception) {
-            $hobbies = false;
+            $interests = false;
         }
 
-        if ($hobbies) {
-            setMessage('success', 'Yay! A Hobbies has been successfully created.');
+        if ($interests) {
+            setMessage('success', 'Yay! A Interest has been successfully created.');
         } else {
-            setMessage('danger', 'Oops! Unable to create a new Hobbies.');
+            setMessage('danger', 'Oops! Unable to create a new Interest.');
         }
         return redirect()->back();
     }
@@ -78,9 +70,9 @@ class HobbyController extends Controller
     public function edit($id)
     {
         $id       = base64_decode($id);
-        $hobbies = Hobby::find($id);
+        $interests = Interest::find($id);
 
-        return view('admin.hobby.edit', compact('hobbies'));
+        return view('admin.interest.edit', compact('interests'));
     }
 
 
@@ -95,29 +87,29 @@ class HobbyController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        $hobbies = Hobby::find($id);
+        $interests = Interest::find($id);
 
         $request->validate([
-            'name' => 'required',
             'icon' => 'required',
+            'number' => 'required',
+            'title' => 'required',
         ]);
 
         $success = null;
         try {
-            $name    = $request->name;
-            $success = $hobbies->update([
-                'name' => $name,
-                'slug' => slugify($name),
-                'icon' =>$request->icon,
+            $success = $interests->update([
+                'icon' => $request->icon,
+                'number' => $request->number,
+                'title' => $request->title,
             ]);
         } catch (Exception $exception) {
             $success = false;
         }
 
         if ($success) {
-            setMessage('success', 'Yay! A Hobbies has been successfully updated.');
+            setMessage('success', 'Yay! A Interests has been successfully updated.');
         } else {
-            setMessage('danger', 'Oops! Unable to update Hobbies.');
+            setMessage('danger', 'Oops! Unable to update Interests.');
         }
         return redirect()->back();
     }
@@ -131,9 +123,9 @@ class HobbyController extends Controller
      */
     public function updateStatus($id, $status)
     {
-        $hobbies         = Hobby::find($id);
-        $hobbies->status = $status;
-        $hobbies->save();
+        $interests         = Interest::find($id);
+        $interests->status = $status;
+        $interests->save();
     }
 
 
@@ -147,9 +139,9 @@ class HobbyController extends Controller
     public function delete($id)
     {
         $id       = base64_decode($id);
-        $hobbies = Hobby::find($id);
-        $hobbies->delete();
-        setMessage('success', 'Hobbies has been successfully deleted!');
+        $interests = Interest::find($id);
+        $interests->delete();
+        setMessage('success', 'Interests has been successfully deleted!');
         return redirect()->back();
     }
 }

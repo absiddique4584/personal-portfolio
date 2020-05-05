@@ -80,10 +80,10 @@
                     <div class="interests-desc bg-light position-relative px-2 py-3 rounded">
                         <div class="hobbies d-flex align-items-center">
                             <div class="text-center rounded-pill mr-4">
-                                <i data-feather="monitor" class="icon fea icon-ex-lg"></i>
+                                <i data-feather="{{ $row->icon }}" class="icon fea icon-ex-lg"></i>
                             </div>
                             <div class="content">
-                                <h6 class="title mb-0">{{ $row->name }}</h6>
+                                <h6 class="title mb-0"> {{ $row->name }}</h6>
                             </div>
                         </div>
                     </div>
@@ -101,47 +101,21 @@
         <div class="container-fluid mt-100 mt-60">
             <div class="rounded py-md-5 py-4" style="background: url('{{asset('assets/website/smart.jpg')}}') center center; height: 380px; width: 100%;">
                 <div class="container">
+
                     <div class="row" id="counter">
+                        @foreach($interests as $row)
                         <div class="col-lg-3 col-6">
                             <div class="counter-box rounded py-3 text-center">
                                 <div class="counter-icon">
-                                    <i data-feather="smile" class="fea icon-md text-primary"></i>
+                                    <i data-feather="{{ $row->icon }}" class="fea icon-md text-primary"></i>
                                 </div>
-                                <h3 class="counter-value mt-3 text-white" data-count="1251">95</h3>
-                                <h6 class="counter-head font-weight-normal mb-0 text-white">Happy Client</h6>
+                                <h3 class="counter-value mt-3 text-white" data-count="{{ $row->number }}">95</h3>
+                                <h6 class="counter-head font-weight-normal mb-0 text-white">{{ $row->title }}</h6>
                             </div><!--end counter box-->
                         </div><!--end col-->
-
-                        <div class="col-lg-3 col-6">
-                            <div class="counter-box rounded py-3 text-center">
-                                <div class="counter-icon">
-                                    <i data-feather="award" class="fea icon-md text-primary"></i>
-                                </div>
-                                <h3 class="counter-value mt-3 text-white" data-count="15">1</h3>
-                                <h6 class="counter-head font-weight-normal mb-0 text-white">Award Won</h6>
-                            </div><!--end counter box-->
-                        </div><!--end col-->
-
-                        <div class="col-lg-3 col-6">
-                            <div class="counter-box rounded py-3 text-center">
-                                <div class="counter-icon">
-                                    <i data-feather="coffee" class="fea icon-md text-primary"></i>
-                                </div>
-                                <h3 class="counter-value mt-3 text-white" data-count="3261">30</h3>
-                                <h6 class="counter-head font-weight-normal mb-0 text-white">Cup of Coffee</h6>
-                            </div><!--end counter box-->
-                        </div><!--end col-->
-
-                        <div class="col-lg-3 col-6">
-                            <div class="counter-box rounded py-3 text-center">
-                                <div class="counter-icon">
-                                    <i data-feather="thumbs-up" class="fea icon-md text-primary"></i>
-                                </div>
-                                <h3 class="counter-value mt-3 text-white" data-count="36">3</h3>
-                                <h6 class="counter-head font-weight-normal mb-0 text-white">Project Complete</h6>
-                            </div><!--end counter box-->
-                        </div><!--end col-->
+                        @endforeach
                     </div><!--end row-->
+
                 </div><!--end container-->
             </div><!--end div-->
         </div><!--end container fluid-->
@@ -171,14 +145,14 @@
                     <div class="service-wrapper rounded position-relative text-center border border-footer p-4 pt-5 pb-5">
 
                         <div class="icon text-primary">
-                            <i data-feather="aperture" class="fea icon-md"></i>
+                            <i data-feather="{{ $row->icon1 }}" class="fea icon-md"></i>
                         </div>
                         <div class="content mt-4">
                             <h5 class="title">{{ $row->name }}</h5>
                             <p class="text-muted mt-3 mb-0">{{ $row->short_des }}</p>
                         </div>
                         <div class="big-icon">
-                            <i data-feather="aperture" class="fea icons"></i>
+                            <i data-feather="{{ $row->icon2 }}" class="fea icons"></i>
                         </div>
 
                     </div>
@@ -274,7 +248,7 @@
                                             <div class="progress-box mt-4 pt-2">
                                                 <h6 class="font-weight-normal">{{ $row->title }}</h6>
                                                 <div class="progress">
-                                                    <div class="progress-bar position-relative bg-primary" style="width:79%;">
+                                                    <div class="progress-bar position-relative bg-primary" style="width:{{ $row->percent }}%;">
                                                         <div style="color: #ffffff;" class="progress-value d-block text-dark h6">{{ $row->number}}%</div>
                                                     </div>
                                                 </div>
@@ -310,17 +284,17 @@
         </div>
 
         <div class="container">
+
             <div class="row mt-4 pt-2">
                 <div class="col-lg-12">
                     <ul class="portfolioFilter text-center mb-0 list-unstyled">
-                        <li class="list-inline-item mb-3"><a href="#" data-filter="*" class="active text-dark mr-2 py-2 px-3 rounded">All</a></li>
-                        <li class="list-inline-item mb-3"><a href="#" data-filter=".natural" class="text-dark mr-2 py-2 px-3 rounded">Natural</a></li>
-                        <li class="list-inline-item mb-3"><a href="#" data-filter=".creative" class="text-dark mr-2 py-2 px-3 rounded">Creative</a></li>
-                        <li class="list-inline-item mb-3"><a href="#" data-filter=".personal" class="text-dark mr-2 py-2 px-3 rounded">Personal</a></li>
-                        <li class="list-inline-item mb-3"><a href="#" data-filter=".photography" class="text-dark mr-2 py-2 px-3 rounded">Photography</a></li>
+                        @foreach($categories as $row)
+                        <li class="list-inline-item mb-3"><a href="#" data-filter="{{$row->slug}}" class="active text-dark mr-2 py-2 px-3 rounded">{{$row->name}}</a></li>
+                        @endforeach
                     </ul>
                 </div><!--end col-->
             </div><!--end row-->
+
 
             <div class="portfolioContainer row">
                 <div class="col-lg-4 col-md-6 mt-4 pt-2 natural personal">

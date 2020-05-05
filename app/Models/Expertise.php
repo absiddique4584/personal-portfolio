@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Expertise extends Model
 {
-    protected $fillable=['title','number','status'];
+    protected $fillable=['title','percent','number','status'];
 }

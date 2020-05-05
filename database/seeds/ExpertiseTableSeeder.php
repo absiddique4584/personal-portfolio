@@ -15,6 +15,7 @@ class ExpertiseTableSeeder extends Seeder
        foreach (range(1,6) as $index){
            Expertise::create([
                'title'=>$faker->word,
+               'percent'=>$faker->biasedNumberBetween(50,100),
                'number'=>$faker->biasedNumberBetween(0,100),
                'status'=>$this->getRandomStatus(),
            ]);

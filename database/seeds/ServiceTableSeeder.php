@@ -17,8 +17,10 @@ class ServiceTableSeeder extends Seeder
 
             $services = $faker->name;
             Service::create([
+                'icon1'=>$faker->imageUrl(),
                 'name'=>$services,
                 'short_des'=>$faker->paragraph,
+                'icon2'=>$faker->imageUrl(),
                 'status'=>$this->getRandomStatus()
             ]);
         }

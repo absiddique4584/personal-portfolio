@@ -37,12 +37,14 @@ class ExpertiseController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'number' => 'required'
+            'percent' => 'required',
+            'number' => 'required',
         ]);
         $expertises = null;
         try {
             $expertises = Expertise::create([
                 'title' => $request->title,
+                'percent' => $request->percent,
                 'number' => $request->number,
             ]);
         } catch (Exception $exception) {
@@ -89,13 +91,15 @@ class ExpertiseController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'number' => 'required'
+            'percent' => 'required',
+            'number' => 'required',
         ]);
 
         $success = null;
         try {
             $success = $expertises->update([
                 'title' => $request->title,
+                'percent' => $request->percent,
                 'number' => $request->number,
             ]);
         } catch (Exception $exception) {

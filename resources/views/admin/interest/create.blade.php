@@ -1,7 +1,7 @@
 @extends('admin.components.layout')
 
 @section('title')
-    Add New Service | Portfolio
+    Add New Interest | Portfolio
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@
         <!-- leftside content header -->
         <div class="leftside-content-header">
             <ul class="breadcrumbs">
-                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Add Service</a></li>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Add Interest</a></li>
             </ul>
         </div>
     </div><br/><br/><br/>
@@ -21,46 +21,38 @@
                 <div class="panel-content">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3>Add New Service</h3>
+                            <h3>Add New Interest</h3>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ route('services.manage') }}" class="btn btn-primary pull-right">Manage Service</a>
+                            <a href="{{ route('interests.manage') }}" class="btn btn-primary pull-right">Manage Interest</a>
                         </div>
                     </div>
                     <hr style="margin-top: 0">
-                    <form class="form-horizontal" method="POST" action="{{ route('services.store') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ route('interests.store') }}">
                         @csrf
 
 
 
                         <div class="form-group">
-                            <label for="icon1" class="col-sm-3 control-label">Service Icon1</label>
+                            <label for="icon" class="col-sm-3 control-label"> Icon </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="icon1" name="icon1" value="{{ old('icon1') }}" required placeholder="Services icon1">
+                                <input type="text" class="form-control" id="icon" name="icon" value="{{ old('icon') }}" required placeholder=" Interest icon">
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="name" class="col-sm-3 control-label">Service Name</label>
+                            <label for="number" class="col-sm-3 control-label">Number</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required placeholder="Services Name">
+                                <input type="number" class="form-control" id="number" name="number" value="{{ old('number') }}" required placeholder="Interest Number">
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="short_des" class="col-sm-3 control-label">Service Desc.</label>
+                            <label for="title" class="col-sm-3 control-label"> Title</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="short_des" name="short_des" value="{{ old('short_des') }}" required placeholder="Services Name">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="icon2" class="col-sm-3 control-label">Service Icon2</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="icon2" name="icon2" value="{{ old('icon2') }}" required placeholder="Services icon2">
+                                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required placeholder=" Interest Title">
                             </div>
                         </div>
 
@@ -68,7 +60,7 @@
                         <div class="row form-group">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                                <button type="submit" class="btn btn-primary">Add Service</button>
+                                <button type="submit" class="btn btn-primary">Add Interest</button>
                             </div>
                         </div>
                     </form>

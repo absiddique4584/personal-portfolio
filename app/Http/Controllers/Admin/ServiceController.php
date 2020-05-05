@@ -39,14 +39,18 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'icon1' =>'required',
             'name' => 'required',
             'short_des' => 'required',
+            'icon2' =>'required',
         ]);
         $services = null;
         try {
             $services = Service::create([
+                'icon1' =>$request->icon1,
                 'name' =>$request->name,
                 'short_des' => $request->short_des,
+                'icon2' =>$request->icon2,
             ]);
         } catch (Exception $exception) {
             $services = false;
@@ -91,15 +95,19 @@ class ServiceController extends Controller
         $services = Service::find($id);
 
         $request->validate([
+            'icon1' =>'required',
             'name' => 'required',
             'short_des' => 'required',
+            'icon2' =>'required',
         ]);
 
         $success = null;
         try {
             $success = $services->update([
+                'icon1' =>$request->icon1,
                 'name' =>$request->name,
                 'short_des' => $request->short_des,
+                'icon2' =>$request->icon2,
             ]);
         } catch (Exception $exception) {
             $success = false;

@@ -33,8 +33,10 @@
                             <thead>
                             <tr>
                                 <th>Sl No</th>
+                                <th>Icon1</th>
                                 <th>Name</th>
                                 <th>Short Desc.</th>
+                                <th>Icon2</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -43,8 +45,10 @@
                             @foreach($services as $service)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $service->icon1 }}</td>
                                     <td>{{ $service->name }}</td>
                                     <td>{{ substr($service->short_des,0,20) }}</td>
+                                    <td>{{ $service->icon2 }}</td>
                                     <td>
                                         <input type="checkbox"  {{ $service->status === 'active' ? 'checked':'' }} id="serviceStatus" data-id="{{ $service->id }}" data-toggle="toggle" data-on="Active" data-off="Inactive" data-size="mini">
                                     </td>

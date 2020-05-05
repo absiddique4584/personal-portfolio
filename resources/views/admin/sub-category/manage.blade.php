@@ -1,7 +1,7 @@
 @extends('admin.components.layout')
 
 @section('title')
-    Manage Portfolio | Portfolio
+    Manage Sub Categories | Online Shop
 @endsection
 @section('content')
 
@@ -9,22 +9,23 @@
         <!-- leftside content header -->
         <div class="leftside-content-header">
             <ul class="breadcrumbs">
-                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Portfolio</a></li>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Dashboard</a></li>
+                <li><a href="javascript:avoid(0)">Sub Categories</a></li>
             </ul>
         </div>
     </div><br/><br/>
     <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     <div class="row animated fadeInRight">
-        <div class="col-sm-12">
+        <div class="col-sm-8 col-sm-offset-2">
             @includeIf('message.message')
             <div class="panel b-primary bt-md">
                 <div class="panel-content">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3>Portfolio</h3>
+                            <h3 style="color: #0b816a;">SubCategories Table</h3>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ route('projects.create') }}" class="btn btn-primary pull-right">Add Portfolio</a>
+                            <a href="{{ route('subcategories.create') }}" class="btn btn-primary pull-right">Add SubCategory</a>
                         </div>
                     </div>
                     <hr style="margin-top: 0">
@@ -34,25 +35,24 @@
                             <tr>
                                 <th>Sl No</th>
                                 <th>Image</th>
-                                <th>title</th>
-                                <th>Sub-title</th>
+                                <th style="text-align: center;">Category => SubCategory</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($projects as $project)
+                            @foreach($subcategories as $subcategory)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $project->image }}</td>
-                                    <td>{{ substr($project->title,1,20) }}</td>
-                                    <td>{{ substr($project->sub_title,1,20) }}</td>
+                                    <td><img style="width: 40px; height: 40px;" src="{{ asset('uploads/portfolio/'.$subcategory->image) }}" alt=""></td>
+                                    <td>{{ $subcategory->category->name .' > '.$subcategory->title }}</td>
                                     <td>
-                                        <input type="checkbox"  {{ $project->status === 'active' ? 'checked':'' }} id="projectStatus" data-id="{{ $project->id }}" data-toggle="toggle" data-on="Active" data-off="Inactive" data-size="mini">
+                                        <input type="checkbox" {{ $subcategory->status === 'active' ? 'checked':'' }} id="subCategoryStatus" data-id="{{ $subcategory->id }}" data-toggle="toggle" data-on="Active"
+                                               data-off="Inactive" data-size="mini">
                                     </td>
                                     <td>
-                                        <a href="{{ route('projects.edit', base64_encode($project->id)) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="{{ route('projects.delete', base64_encode($project->id)) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                                        <a href="{{ route('subcategories.edit', base64_encode($subcategory->id)) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a href="{{ route('subcategories.delete', base64_encode($subcategory->id)) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Project;
-class ProjectTableSeeder extends Seeder
+use App\Models\SubCategory;
+class SubCategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,12 @@ class ProjectTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        foreach (range(1,6)as  $index){
-            Project::create([
+
+        foreach (range(1,12)as $index){
+            SubCategory::create([
+                'category_id'=>rand(1,5),
+                'title'=> $faker->title,
                 'image'=>$faker->imageUrl(),
-                'title'=>$faker->sentence,
-                'sub_title'=>$faker->sentence,
                 'status'=>$this->getRandomStatus()
             ]);
         }

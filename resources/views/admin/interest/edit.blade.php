@@ -1,7 +1,7 @@
 @extends('admin.components.layout')
 
 @section('title')
-    Update Portfolio | Portfolio
+    Update Interest | Portfolio
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@
         <!-- leftside content header -->
         <div class="leftside-content-header">
             <ul class="breadcrumbs">
-                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Update Portfolio</a></li>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Update Interest</a></li>
             </ul>
         </div>
     </div><br/><br/>
@@ -21,47 +21,51 @@
                 <div class="panel-content">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3>Update Portfolio</h3>
+                            <h3>Update Interest</h3>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ route('projects.manage') }}" class="btn btn-primary pull-right">Manage Portfolio</a>
+                            <a href="{{ route('interests.manage') }}" class="btn btn-primary pull-right">Manage Interest</a>
                         </div>
                     </div>
                     <hr style="margin-top: 0">
-                    <form class="form-horizontal" method="POST" action="{{ route('projects.update',$projects->id) }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('interests.update') }}">
                         @csrf
+                        @method('put')
+
+
+                        <input type="hidden" name="id" value="{{ $interests->id }}">
 
 
 
                         <div class="form-group">
-                            <label for="image" class="col-sm-3 control-label"> Image</label>
+                            <label for="icon" class="col-sm-3 control-label">Interest Percent</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" id="image" name="image" value="{{ $projects->image }}" required >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="title" class="col-sm-3 control-label"> Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $projects->title }}" required placeholder=" Project Title">
+                                <input type="text" class="form-control" id="icon" name="icon" value="{{ $interests->icon }}" required >
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="sub_title" class="col-sm-3 control-label">Sub-title</label>
+                            <label for="number" class="col-sm-3 control-label">Interest Number</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="sub_title" name="sub_title" value="{{ $projects->sub_title }}" required placeholder="Project Sub Title">
+                                <input type="number" class="form-control" id="number" name="number" value="{{ $interests->number }}" required >
                             </div>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="title" class="col-sm-3 control-label">Interest Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $interests->title }}" required >
+                            </div>
+                        </div>
 
 
 
                         <div class="row form-group">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                                <button type="submit" class="btn btn-primary">Update Portfolio</button>
+                                <button type="submit" class="btn btn-primary">Update Interest</button>
                             </div>
                         </div>
                     </form>

@@ -40,6 +40,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="icon" class="col-sm-3 control-label">Hobby Icon</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="icon" name="icon" value="{{ $hobbies->icon }}" required>
+                            </div>
+                        </div>
+
                         <div class="row form-group">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">

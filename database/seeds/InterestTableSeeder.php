@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Hobby;
-class HobbyTableSeeder extends Seeder
+use App\Models\Interest;
+class InterestTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,16 +11,13 @@ class HobbyTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-
-        foreach (range(1,14)as $index){
-
-            $hobbies = $faker->name;
-             Hobby::create([
-                'name'=>$hobbies,
-                'slug'=>slugify($hobbies),
+        $faker=  Faker\Factory::create();
+        foreach (range(1,4) as $index){
+            Interest::create([
                 'icon'=>$faker->imageUrl(),
-                'status'=>$this->getRandomStatus()
+                'number'=>$faker->biasedNumberBetween(20,1500),
+                'title'=>$faker->word,
+                'status'=>$this->getRandomStatus(),
             ]);
         }
     }

@@ -1,7 +1,7 @@
 @extends('admin.components.layout')
 
 @section('title')
-    Add New Hobby | Portfolio
+    Add New Category | Online Shop
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@
         <!-- leftside content header -->
         <div class="leftside-content-header">
             <ul class="breadcrumbs">
-                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Add Hobby</a></li>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="javascript:avoid(0)">Add Category</a></li>
             </ul>
         </div>
     </div><br/><br/><br/>
@@ -21,35 +21,26 @@
                 <div class="panel-content">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3>Add New Hobby</h3>
+                            <h3>Add New Category</h3>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ route('hobbies.manage') }}" class="btn btn-primary pull-right">Manage Hobby</a>
+                            <a href="{{ route('categories.manage') }}" class="btn btn-primary pull-right">Manage</a>
                         </div>
                     </div>
                     <hr style="margin-top: 0">
-                    <form class="form-horizontal" method="POST" action="{{ route('hobbies.store') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('categories.store') }}">
                         @csrf
-
-
                         <div class="form-group">
-                            <label for="name" class="col-sm-3 control-label">Hobby Name</label>
+                            <label for="name" class="col-sm-3 control-label">Category Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required placeholder="Hobbies Name">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="icon" class="col-sm-3 control-label">Hobby Icon</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="icon" name="icon" value="{{ old('icon') }}" required placeholder="Hobbies icon">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required placeholder="Category Name">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                                <button type="submit" class="btn btn-primary">Add Hobby</button>
+                                <button type="submit" class="btn btn-primary">Add Category</button>
                             </div>
                         </div>
                     </form>

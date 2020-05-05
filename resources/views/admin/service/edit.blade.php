@@ -37,6 +37,13 @@
                         <input type="hidden" name="id" value="{{ $services->id }}">
 
 
+                        <div class="form-group">
+                            <label for="icon1" class="col-sm-3 control-label">Sarvice icon1</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="icon1" name="icon1" value="{{ $services->icon1 }}" required>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Sarvice Name</label>
@@ -50,6 +57,13 @@
                             <label for="short_des" class="col-sm-3 control-label">short des.</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="short_des" name="short_des" value="{{ $services->short_des }}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="icon2" class="col-sm-3 control-label">Sarvice icon2</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="icon2" name="icon2" value="{{ $services->icon2 }}" required>
                             </div>
                         </div>
 

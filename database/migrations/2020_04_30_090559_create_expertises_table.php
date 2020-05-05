@@ -16,6 +16,7 @@ class CreateExpertisesTable extends Migration
         Schema::create('expertises', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('percent');
             $table->integer('number');
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

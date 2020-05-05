@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //website route
 Route::get('/', 'Site\SiteController@index')->name('index');
+
 Auth::routes();
 
 
@@ -22,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', 'Admin\ProfileController@profile')->name('profile');
         Route::get('/edit', 'Admin\ProfileController@edit')->name('edit');
         Route::post('/update', 'Admin\ProfileController@update')->name('update');
+
+
 
     });
 
@@ -46,6 +49,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/update', 'Admin\HobbyController@update')->name('update');
         Route::get('/delete/{id}', 'Admin\HobbyController@delete')->name('delete');
         Route::get('/update-status/{id}/{status}', 'Admin\HobbyController@updateStatus')->name('update.status');
+    });
+
+    //Interest Route
+    Route::prefix('interests')->name('interests.')->group(function () {
+        Route::get('/', 'Admin\InterestController@index')->name('manage');
+        Route::get('/add', 'Admin\InterestController@create')->name('create');
+        Route::post('/store', 'Admin\InterestController@store')->name('store');
+        Route::get('/edit/{id}', 'Admin\InterestController@edit')->name('edit');
+        Route::put('/update', 'Admin\InterestController@update')->name('update');
+        Route::get('/delete/{id}', 'Admin\InterestController@delete')->name('delete');
+        Route::get('/update-status/{id}/{status}', 'Admin\InterestController@updateStatus')->name('update.status');
     });
 
 
@@ -86,15 +100,26 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //My Portfolio Route
-    Route::prefix('projects')->name('projects.')->group(function () {
-        Route::get('/', 'Admin\ProjectController@index')->name('manage');
-        Route::get('/add', 'Admin\ProjectController@create')->name('create');
-        Route::post('/store', 'Admin\ProjectController@store')->name('store');
-        Route::get('/edit/{id}', 'Admin\ProjectController@edit')->name('edit');
-        Route::post('/update/{id}', 'Admin\ProjectController@update')->name('update');
-        Route::get('/delete/{id}', 'Admin\ProjectController@delete')->name('delete');
-        Route::get('/update-status/{id}/{status}', 'Admin\ProjectController@updateStatus')->name('update.status');
+    Route::prefix('categories')->name('categories.')->group(function () {
+        Route::get('/', 'Admin\CategoryController@index')->name('manage');
+        Route::get('/add', 'Admin\CategoryController@create')->name('create');
+        Route::post('/store', 'Admin\CategoryController@store')->name('store');
+        Route::get('/edit/{id}', 'Admin\CategoryController@edit')->name('edit');
+        Route::put('/update', 'Admin\CategoryController@update')->name('update');
+        Route::get('/delete/{id}', 'Admin\CategoryController@delete')->name('delete');
+        Route::get('/update-status/{id}/{status}', 'Admin\CategoryController@updateStatus')->name('update.status');
     });
+
+    Route::prefix('subcategories')->name('subcategories.')->group(function () {
+        Route::get('/', 'Admin\SubCategoryController@index')->name('manage');
+        Route::get('/add', 'Admin\SubCategoryController@create')->name('create');
+        Route::post('/store', 'Admin\SubCategoryController@store')->name('store');
+        Route::get('/edit/{id}', 'Admin\SubCategoryController@edit')->name('edit');
+        Route::put('/update', 'Admin\SubCategoryController@update')->name('update');
+        Route::get('/delete/{id}', 'Admin\SubCategoryController@delete')->name('delete');
+        Route::get('/update-status/{id}/{status}', 'Admin\SubCategoryController@updateStatus')->name('update.status');
+    });
+
 
 
     /**

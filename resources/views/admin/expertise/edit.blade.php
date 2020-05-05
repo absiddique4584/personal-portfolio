@@ -44,6 +44,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="percent" class="col-sm-3 control-label">Expertise Percent</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="percent" name="percent" value="{{ $expertises->percent }}" required >
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="number" class="col-sm-3 control-label">Expertise Number</label>

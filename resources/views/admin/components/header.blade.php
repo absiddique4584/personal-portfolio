@@ -115,11 +115,16 @@
                                 </ul>
                             </li>
                             <!--Hobbies & Interests-->
-                            <li class="has-child-item  {{ request()->is('hobbies','hobbies/*') ? 'open-item active-item':'' }} close-item">
+                            <li class="has-child-item  {{ request()->is('hobbies','hobbies/*','interests','interests/*') ? 'open-item active-item':'' }} close-item">
                                 <a><i class="fa fa-list" aria-hidden="true"></i><span>Hobbies & Interests</span></a>
                                 <ul class="nav child-nav level-1">
                                     <li class="{{ request()->is('hobbies/add','hobbies/edit/*') ? 'active-item':'' }}"><a href="{{ route('hobbies.create') }}">Add Hobbies</a></li>
                                     <li class="{{ request()->is('hobbies') ? 'active-item':'' }}"><a href="{{ route('hobbies.manage') }}">Manage Hobbies</a></li>
+                                </ul>
+
+                                <ul class="nav child-nav level-1">
+                                    <li class="{{ request()->is('interests/add','interests/edit/*') ? 'active-item':'' }}"><a href="{{ route('interests.create') }}">Add Interest</a></li>
+                                    <li class="{{ request()->is('interests') ? 'active-item':'' }}"><a href="{{ route('interests.manage') }}">Manage Interest</a></li>
                                 </ul>
                             </li>
 
@@ -151,14 +156,19 @@
                                 </ul>
                             </li>
 
-                            <!--Work Expertise-->
-                            <li class="has-child-item  {{ request()->is('projects','projects/*') ? 'open-item active-item':'' }} close-item">
+                            <!--My Portfolio-->
+                            <li class="has-child-item  {{ request()->is('categories','categories/*','subcategories','subcategories/*') ? 'open-item active-item':'' }} close-item">
                                 <a><i class="fa fa-list" aria-hidden="true"></i><span>My Portfolio</span></a>
                                 <ul class="nav child-nav level-1">
-                                    <li class="{{ request()->is('projects/add','projects/edit/*') ? 'active-item':'' }}"><a href="{{ route('projects.create') }}">Add Portfolio</a></li>
-                                    <li class="{{ request()->is('projects') ? 'active-item':'' }}"><a href="{{ route('projects.manage') }}">Manage Portfolio</a></li>
+                                    <li class="{{ request()->is('categories/add','categories/edit/*') ? 'active-item':'' }}"><a href="{{ route('categories.create') }}">Add Category</a></li>
+                                    <li class="{{ request()->is('categories') ? 'active-item':'' }}"><a href="{{ route('categories.manage') }}">Manage Category</a></li>
+                                </ul>
+                                <ul class="nav child-nav level-1">
+                                    <li class="{{ request()->is('subcategories/add','subcategories/edit/*') ? 'active-item':'' }}"><a href="{{ route('subcategories.create') }}">Add SubCategory</a></li>
+                                    <li class="{{ request()->is('subcategories') ? 'active-item':'' }}"><a href="{{ route('subcategories.manage') }}">Manage SubCategory</a></li>
                                 </ul>
                             </li>
+
 
 
                             <!--Clients say-->

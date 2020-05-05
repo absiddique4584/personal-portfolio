@@ -34,6 +34,7 @@
                             <tr>
                                 <th>Sl No</th>
                                 <th>Title</th>
+                                <th>Percent</th>
                                 <th>Number</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -44,6 +45,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $expertise->title }}</td>
+                                    <td>{{ $expertise->percent }}</td>
                                     <td>{{ $expertise->number }}</td>
                                     <td>
                                         <input type="checkbox"  {{ $expertise->status === 'active' ? 'checked':'' }} id="expertiseStatus" data-id="{{ $expertise->id }}" data-toggle="toggle" data-on="Active" data-off="Inactive" data-size="mini">

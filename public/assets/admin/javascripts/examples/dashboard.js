@@ -167,6 +167,24 @@ $('body').on('change', "#hobbyStatus", function () {
 
 });
 
+$('body').on('change', "#interestStatus", function () {
+    var id = $(this).attr('data-id');
+    if (this.checked) {
+        var status = 'active';
+    } else {
+        status = 'inactive';
+    }
+    $('.loader__').show();
+    $.ajax({
+        url: "interests/update-status/" + id + '/' + status,
+        method: 'get',
+        success: function (result) {
+            $('.loader__').hide();
+        }
+    });
+
+});
+
 
 
 $('body').on('change', "#serviceStatus", function () {
@@ -284,5 +302,43 @@ $('body').on('change', "#blogStatus", function () {
 
 });
 
+
+$('body').on('change', "#categoryStatus", function () {
+    var id = $(this).attr('data-id');
+    if (this.checked) {
+        var status = 'active';
+    } else {
+        status = 'inactive';
+    }
+    $('.loader__').show();
+    $.ajax({
+        url: "categories/update-status/" + id + '/' + status,
+        method: 'get',
+        success: function (result) {
+            $('.loader__').hide();
+        }
+    });
+
+});
+
+
+
+$('body').on('change', "#subCategoryStatus", function () {
+    var id = $(this).attr('data-id');
+    if (this.checked) {
+        var status = 'active';
+    } else {
+        status = 'inactive';
+    }
+    $('.loader__').show();
+    $.ajax({
+        url: "subcategories/update-status/" + id + '/' + status,
+        method: 'get',
+        success: function (result) {
+            $('.loader__').hide();
+        }
+    });
+
+});
 
 

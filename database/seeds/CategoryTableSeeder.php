@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Hobby;
-class HobbyTableSeeder extends Seeder
+use App\Models\Category;
+class CategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,13 +13,11 @@ class HobbyTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        foreach (range(1,14)as $index){
-
-            $hobbies = $faker->name;
-             Hobby::create([
-                'name'=>$hobbies,
-                'slug'=>slugify($hobbies),
-                'icon'=>$faker->imageUrl(),
+        foreach (range(1,5)as $index){
+            $category = $faker->name;
+            Category::create([
+                'name'=>$category,
+                'slug'=>slugify($category),
                 'status'=>$this->getRandomStatus()
             ]);
         }
