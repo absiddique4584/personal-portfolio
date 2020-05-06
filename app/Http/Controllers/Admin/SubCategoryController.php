@@ -54,17 +54,11 @@ class SubCategoryController extends Controller
         $subcategories = null;
         try {
             $image    = $request->file('image');
-            $fileName = rand(0, 999999999) . '_' . date('Ymdhis') . '_' . rand(99999, 999999999) . '.' . $image->getClientOriginalExtension();
-            if ($image->isValid()) {
-                if ($image->getMimeType() === "image/png" || $image->getMimeType() === "image/jpeg") {
-                    $image->storeAs('uploads/portfolio', $fileName);
-                } else {
-                    setMessage("danger","Something wrong !");
-                    return redirect()->back();
-                }
-            }
+            $fileEx   = $image->getClientOriginalExtension();
+            $fileName = date('Ymdhis.') . $fileEx;
+            $image->move(public_path('uploads/subcategory/'), $fileName);
 
-            $subcategories = Category::create([
+            $subcategories = SubCategory::create([
                 'category_id' => $request->category,
                 'title'        => $request->title,
                 'image' => $fileName,
@@ -120,15 +114,9 @@ class SubCategoryController extends Controller
         $success = null;
         try {
             $image    = $request->file('image');
-            $fileName = rand(0, 999999999) . '_' . date('Ymdhis') . '_' . rand(99999, 999999999) . '.' . $image->getClientOriginalExtension();
-            if ($image->isValid()) {
-                if ($image->getMimeType() === "image/png" || $image->getMimeType() === "image/jpeg") {
-                    $image->storeAs('uploads/portfolio', $fileName);
-                } else {
-                    setMessage("danger","Something wrong !");
-                    return redirect()->back();
-                }
-            }
+            $fileEx   = $image->getClientOriginalExtension();
+            $fileName = date('Ymdhis.') . $fileEx;
+            $image->move(public_path('uploads/subcategory/'), $fileName);
 
             $success = $subcategories->update([
                 'category_id' => $request->category,
@@ -167,6 +155,7 @@ class SubCategoryController extends Controller
     {
         $id       = base64_decode($id);
         $subcategories = SubCategory::find($id);
+        unlink(public_path('uploads/subcategory/') . $subcategories->image);
         $subcategories->delete();
         setMessage('success', 'SubCategory has been successfully deleted!');
         return redirect()->back();

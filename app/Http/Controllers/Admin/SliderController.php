@@ -164,6 +164,7 @@ class SliderController extends Controller
     {
         $id     = base64_decode($id);
         $slider = Slider::find($id);
+        unlink(public_path('uploads/slider/') . $slider->image);
         $slider->delete();
         setMessage('success', 'Slider has been successfully deleted!');
         return redirect()->back();

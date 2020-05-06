@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0">
-                    <form class="form-horizontal" method="POST" action="{{ route('subcategories.store') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('subcategories.store') }}" enctype="multipart/form-data">
                         @csrf
 
 

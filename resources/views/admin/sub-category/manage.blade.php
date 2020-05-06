@@ -34,8 +34,8 @@
                             <thead>
                             <tr>
                                 <th>Sl No</th>
-                                <th>Image</th>
                                 <th style="text-align: center;">Category => SubCategory</th>
+                                <th>Image</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -44,8 +44,8 @@
                             @foreach($subcategories as $subcategory)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img style="width: 40px; height: 40px;" src="{{ asset('uploads/portfolio/'.$subcategory->image) }}" alt=""></td>
                                     <td>{{ $subcategory->category->name .' > '.$subcategory->title }}</td>
+                                    <td><img style="width: 40px; height: 40px;" src="{{ asset('uploads/subcategory/'.$subcategory->image) }}" alt=""></td>
                                     <td>
                                         <input type="checkbox" {{ $subcategory->status === 'active' ? 'checked':'' }} id="subCategoryStatus" data-id="{{ $subcategory->id }}" data-toggle="toggle" data-on="Active"
                                                data-off="Inactive" data-size="mini">

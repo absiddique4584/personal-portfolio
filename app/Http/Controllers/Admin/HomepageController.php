@@ -156,6 +156,7 @@ class HomepageController extends Controller
     {
         $id     = base64_decode($id);
         $homepage = Homepage::find($id);
+        unlink(public_path('uploads/homepage/') . $homepage->image);
         $homepage->delete();
         setMessage('success', 'Homepage has been successfully deleted!');
         return redirect()->back();

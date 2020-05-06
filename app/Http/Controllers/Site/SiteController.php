@@ -13,6 +13,8 @@ use App\Models\Blog;
 use App\Models\Slider;
 use App\Models\Interest;
 use App\Models\Category;
+use App\Models\SubCategory;
+
 class SiteController extends Controller
 {
     public function index(){
@@ -25,7 +27,9 @@ class SiteController extends Controller
          $sliders = Slider::select('title','sub_title','short_desc','image','start','end')->where('status','active')->get();
          $interests = Interest::select('icon','number','title')->where('status','active')->get();
          $categories = Category::select('name','slug')->where('status','active')->get();
-        return view('site.index',compact('homepage','hobbies','services','participations','expertise','blogs','sliders','interests','categories'));
+         $subcategories = SubCategory::with('category')->where('status','active')->get();
+
+        return view('site.index',compact('homepage','hobbies','services','participations','expertise','blogs','sliders','interests','categories','subcategories'));
     }
 
 

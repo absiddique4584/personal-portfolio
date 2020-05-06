@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0">
-                    <form class="form-horizontal" method="POST" action="{{ route('subcategories.update') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('subcategories.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="hidden" name="id" value="{{ $subcategories->id }}">
