@@ -38,7 +38,7 @@
 
 
                         <div class="form-group">
-                            <label for="icon" class="col-sm-3 control-label">Interest Percent</label>
+                            <label for="icon" class="col-sm-3 control-label">Interest Icon</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="icon" name="icon" value="{{ $interests->icon }}" required >
                             </div>

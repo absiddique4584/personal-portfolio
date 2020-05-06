@@ -37,7 +37,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-5">
                     <div class="about-hero">
-                        <img style="height: 420px; width: auto;" src="{{ asset('uploads/homepage/'.$row->image) }}" class="img-fluid mx-auto d-block about-tween position-relative" alt="">
+                        <img style="height: 420px; width: auto;" src="{{ asset('uploads/homepage/'.$row->image) }}" class="img-fluid mx-auto d-block about-tween position-relative rounded" alt="">
                     </div>
                 </div><!--end col-->
 
