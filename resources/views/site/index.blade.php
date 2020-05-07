@@ -8,7 +8,7 @@
 @section('content')
 
     <!-- HOME START--><br><br>
-    <section class="bg-home bg-light d-table w-100" style="background-image:url('{{asset("assets/website/images/home/01.png")}}')" id="home">
+    <section class="bg-home bg-light d-table w-100" id="home">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -361,20 +361,22 @@
                                                 <li class="list-inline-item text-primary"><i class="mdi mdi-star"></i></li>
                                                 <li class="list-inline-item text-primary"><i class="mdi mdi-star"></i></li>
                                                 <li class="list-inline-item text-primary"><i class="mdi mdi-star"></i></li>
-                                                <li class="list-inline-item text-primary"><i class="mdi mdi-star"></i></li>
+                                                <li style=" margin-right: 10px;" class="list-inline-item text-primary"><i class="mdi mdi-star"></i></li>
                                             </ul>
                                             <div class="review-base">
-                                                <h6 class="title">{{$row->title}}</h6>
+                                                <h6 style="margin-top: 10px; margin-left: 10px;" class="title">{{$row->title}}</h6>
                                             </div>
                                         </div><!--end review star-->
-                                        <p class="text-muted review-para font-italic mt-3 mb-3">{{$row->short_desc}}</p>
+                                        <p class="text-muted review-para font-italic mt-3 mb-3 ml-2">{{$row->short_desc}}</p>
                                         <div class="reviewer d-flex align-items-center">
-                                            <img src="{{ asset('uploads/slider/'.$row->image) }}" class="img-fluid rounded-circle avatar avatar-small mr-3" alt="">
+                                            <img style="height: 380px;width: 350px;" src="{{ asset('uploads/slider/'.$row->image) }}" class="img-fluid rounded-circle avatar avatar-small mr-3" alt="">
+
                                             <div class="content">
-                                                <h5 class="name mb-0">{{$row->sub_title}}</h5>
+                                                <h5 style="margin-right: 5px;" class="name mb-0">{{$row->sub_title}}</h5>
 
                                             </div>
                                         </div><!--end reviewer-->
+                                        <br>
                                     </div><!--end client review-->
                                     <!--End Client-->
                                     @endforeach
@@ -403,7 +405,7 @@
                             <h4 style="color: blueviolet;" class="title title-line text-uppercase mb-4 pb-4">Latest News & Blog</h4>
                             <span></span>
                         </div>
-                        <p class="text-muted mx-auto para-desc mb-0">Obviously I'm a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                        <p class="text-muted mx-auto para-desc mb-0">Obviously I'm a Web Developer. Experienced with all stages of the development cycle for dynamic web projects.</p>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
@@ -412,7 +414,7 @@
                 @foreach($blogs as $row)
                 <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
                     <div class="blog-post rounded shadow">
-                        <img src="{{ asset('uploads/blog/'.$row->image) }}" class="img-fluid rounded-top" alt="">
+                        <img style="width: 360px; height: 200px;" src="{{ asset('uploads/blog/'.$row->image) }}" class="img-fluid rounded-top" alt="">
                         <div class="content pt-4 pb-4 p-3">
                             <ul class="list-unstyled d-flex justify-content-between post-meta">
                                 <li><i data-feather="user" class="fea icon-sm mr-1"></i><a href="javascript:void(0)" class="text-dark">{{$row->name}}</a></li>
@@ -430,7 +432,7 @@
 
 
             </div><!--end row-->
-        </div><!--end container--><br><br>
+        </div><!--end container--><br><br><br><br>
 
         <div class="container-fluid mt-100 mt-60">
             <div class="rounded-pill py-5" style="background: url('{{asset('assets/website/hero1.jpg')}}') center center; height: 300px;width: 100%;">
@@ -438,7 +440,7 @@
                     <div class="row justify-content-center">
                         <div class="col-12 text-center">
                             <h4 class="text-light">I Am Available For Freelancer Projects.</h4>
-                            <p class="text-white-50 mx-auto mt-4 para-desc">Obviously I'm a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                            <p style="color: #ff55ff;" class="text-white-50 mx-auto mt-4 para-desc">Obviously I'm a Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
                             <div class="mt-4">
                                 <a href="#contact" class="btn btn-primary mouse-down">Hire me <i data-feather="chevron-down" class="fea icon-sm"></i></a>
                             </div>
@@ -447,7 +449,9 @@
                 </div><!--end container-->
             </div><!--end div-->
         </div><!--end container fluid-->
+        <br>
     </section><!--end section-->
+    <br>
     <!-- Blog Start -->
 
     <!-- Contact Start -->
@@ -514,23 +518,27 @@
                 <div class="col-lg-12">
                     <div class="custom-form mb-sm-30">
                         <div id="message"></div>
-                        <form method="post" action="http://shreethemes.in/cristino/layouts/php/contact.php" name="contact-form" id="contact-form">
+
+
+                        <form method="post" action="{{ route('messages.store') }}" >
+                            @csrf
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-6">
                                             <div class="form-group">
-                                                <input name="name" id="name" type="text" class="form-control border rounded" placeholder="First Name :">
+                                                <input name="name" id="name" type="text" value="{{ old('name') }}" class="form-control border rounded" placeholder=" Name :"  >
                                             </div>
                                         </div><!--end col-->
                                         <div class="col-lg-12 col-md-6">
                                             <div class="form-group">
-                                                <input name="email" id="email" type="email" class="form-control border rounded" placeholder="Your email :">
+                                                <input name="email" id="email" type="email" value="{{ old('email') }}" class="form-control border rounded" placeholder="Your email :"   >
                                             </div>
                                         </div><!--end col-->
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <input name="subject" id="subject" class="form-control border rounded" placeholder="Your subject :">
+                                                <input name="subject" id="subject" value="{{ old('subject') }}" class="form-control border rounded" placeholder="Your subject :"  >
                                             </div>
                                         </div><!--end col-->
                                     </div><!--end row-->
@@ -538,13 +546,14 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <textarea name="comments" id="comments" rows="4" class="form-control border rounded" placeholder="Your Message :"></textarea>
+                                        <textarea name="comments" id="comments" value="{{ old('comments') }}" rows="4" class="form-control border rounded" placeholder="Your Message :"></textarea>
                                     </div>
                                 </div><!--end col-->
                             </div><!--end row-->
                             <div class="row">
                                 <div class="col-sm-12 text-right">
-                                    <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary" value="Send Message">
+                                    <button type="submit" class=" btn btn-primary" >Send Message</button>
+
                                     <div id="simple-msg"></div>
                                 </div><!--end col-->
                             </div><!--end row-->

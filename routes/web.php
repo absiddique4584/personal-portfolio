@@ -148,5 +148,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/delete/{id}', 'Admin\BlogController@delete')->name('delete');
         Route::get('/update-status/{id}/{status}', 'Admin\BlogController@updateStatus')->name('update.status');
     });
+
+
+
+    /**
+     * Message Route
+     */
+    Route::prefix('messages')->name('messages.')->group(function () {
+        Route::get('/', 'Site\MessageController@index')->name('manage');
+        Route::get('/add', 'Site\MessageController@create')->name('create');
+        Route::post('/store', 'Site\MessageController@store')->name('store');
+        Route::get('/delete/{id}', 'Site\MessageController@delete')->name('delete');
+    });
 });
 

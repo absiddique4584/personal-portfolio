@@ -190,6 +190,16 @@
                                 </ul>
                             </li>
 
+
+
+                            <!--Message-->
+                            <li class="has-child-item  {{ request()->is('messages','messages/*') ? 'open-item active-item':'' }} close-item">
+                                <a><i class="fa fa-list" aria-hidden="true"></i><span>Messages</span></a>
+                                <ul class="nav child-nav level-1">
+                                    <li class="{{ request()->is('messages') ? 'active-item':'' }}"><a href="{{ route('messages.manage') }}">Manage Messages</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </nav>
                 </div>
